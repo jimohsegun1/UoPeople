@@ -1,11 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MATH 1211: Unit 8 Assignment</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 2;
+            /* Fulfills the double-spaced rubric requirement */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2em;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+        
+        p,
+        ul,
+        ol {
+            margin: 0 0 1em 0;
+        }
+        
+        .math-block {
+            margin-left: 2em;
+            font-style: italic;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .indent {
+            margin-left: 2em;
+        }
+    </style>
 </head>
+
 <body>
-    <div>H1</div>
+
+    <p><span class="bold">Assignment Activity Unit 8: Definite Integrals and Their Applications</span></p>
+
+    <h2>Question 1: Evaluate the following definite integrals with all the required steps.</h2>
+
+    <p><span class="bold">1. &int;<sub>1</sub><sup>4</sup> (<i>x</i> &minus; 3/&radic;<i>x</i>) <i>dx</i></span>[cite: 21]</p>
+    <ul>
+        <li><strong>Step 1: Find the antiderivative using the power rule.</strong><br> Rewrite the integrand as <i>x</i> &minus; 3<i>x</i><sup>&minus;1/2</sup> (Herman &amp; Strang, 2024).<br> The antiderivative is [ (<i>x</i><sup>2</sup> / 2) &minus; 3(<i>x</i><sup>1/2</sup>            / (1/2)) ] = [ (<i>x</i><sup>2</sup> / 2) &minus; 6&radic;<i>x</i> ].</li>
+        <li><strong>Step 2: Evaluate using the Fundamental Theorem of Calculus Part 2.</strong><br> Evaluate at upper limit 4: (4<sup>2</sup> / 2) &minus; 6&radic;4 = (16 / 2) &minus; 6(2) = 8 &minus; 12 = &minus;4.<br> Evaluate at lower limit 1: (1<sup>2</sup>            / 2) &minus; 6&radic;1 = 0.5 &minus; 6 = &minus;5.5.<br> Subtract the lower limit value from the upper: &minus;4 &minus; (&minus;5.5) = 1.5.</li>
+        <li><span class="bold">Final Answer: 3/2 (or 1.5)</span></li>
+    </ul>
+
+    <p><span class="bold">2. &int;<sub>1</sub><sup>2</sup> (<i>e</i><sup>&minus;<i>x</i></sup> + 1)<sup>2</sup> <i>dx</i></span>[cite: 21]</p>
+    <ul>
+        <li><strong>Step 1: Expand the integrand algebraically.</strong><br> (
+            <i>e</i><sup>&minus;<i>x</i></sup> + 1)(<i>e</i><sup>&minus;<i>x</i></sup> + 1) = <i>e</i><sup>&minus;2<i>x</i></sup> + 2<i>e</i><sup>&minus;<i>x</i></sup> + 1.</li>
+        <li><strong>Step 2: Find the antiderivative term by term.</strong><br> [ &minus;(1/2)<i>e</i><sup>&minus;2<i>x</i></sup> &minus; 2<i>e</i><sup>&minus;<i>x</i></sup> + <i>x</i> ].</li>
+        <li><strong>Step 3: Evaluate limits.</strong><br> Upper limit (2): &minus;(1/2)<i>e</i><sup>&minus;4</sup> &minus; 2<i>e</i><sup>&minus;2</sup> + 2.<br> Lower limit (1): &minus;(1/2)<i>e</i><sup>&minus;2</sup> &minus; 2<i>e</i><sup>&minus;1</sup>            + 1.<br> Subtract: (&minus;(1/2)<i>e</i><sup>&minus;4</sup> &minus; 2<i>e</i><sup>&minus;2</sup> + 2) &minus; (&minus;(1/2)<i>e</i><sup>&minus;2</sup> &minus; 2<i>e</i><sup>&minus;1</sup> + 1)</li>
+        <li><span class="bold">Final Answer: &minus;(1/2)<i>e</i><sup>&minus;4</sup> &minus; (3/2)<i>e</i><sup>&minus;2</sup> + 2<i>e</i><sup>&minus;1</sup> + 1</span></li>
+    </ul>
+
+    <p><span class="bold">3. &int;<sub>0</sub><sup>&pi;/6</sup> (sin 3<i>x</i> &minus; cos <i>x</i>) <i>dx</i></span>[cite: 21]</p>
+    <ul>
+        <li><strong>Step 1: Find the antiderivative.</strong><br> [ &minus;(1/3)cos(3<i>x</i>) &minus; sin(<i>x</i>) ].</li>
+        <li><strong>Step 2: Evaluate limits.</strong><br> Upper limit (&pi;/6): &minus;(1/3)cos(&pi;/2) &minus; sin(&pi;/6) = &minus;(1/3)(0) &minus; 1/2 = &minus;1/2.<br> Lower limit (0): &minus;(1/3)cos(0) &minus; sin(0) = &minus;(1/3)(1) &minus; 0 = &minus;1/3.<br>            Subtract: &minus;1/2 &minus; (&minus;1/3) = &minus;3/6 + 2/6 = &minus;1/6.</li>
+        <li><span class="bold">Final Answer: &minus;1/6</span></li>
+    </ul>
+
+    <p><span class="bold">4. &int;<sub>&minus;4</sub><sup>0</sup> (4 / (5 &minus; 2<i>x</i>)) <i>dx</i></span>[cite: 21]</p>
+    <ul>
+        <li><strong>Step 1: Use <i>u</i>-substitution.</strong><br> Let <i>u</i> = 5 &minus; 2<i>x</i>. Therefore, <i>du</i> = &minus;2 <i>dx</i>, which means <i>dx</i> = &minus;<i>du</i> / 2.<br> Change limits: When <i>x</i> = 0, <i>u</i> = 5. When <i>x</i>            = &minus;4, <i>u</i> = 13.<br> The integral becomes: &int;<sub>13</sub><sup>5</sup> (4 / <i>u</i>)(&minus;<i>du</i> / 2) = &minus;2 &int;<sub>13</sub><sup>5</sup> (1 / <i>u</i>) <i>du</i>.</li>
+        <li><strong>Step 2: Integrate and evaluate.</strong><br> Flip limits to remove negative: 2 &int;<sub>5</sub><sup>13</sup> (1 / <i>u</i>) <i>du</i> = 2[ ln|<i>u</i>| ]<sub>5</sub><sup>13</sup>.<br> Evaluate: 2ln(13) &minus; 2ln(5) = 2ln(13/5).</li>
+        <li><span class="bold">Final Answer: 2ln(13/5)</span></li>
+    </ul>
+
+    <p><span class="bold">5. &int;<sub>&pi;/4</sub><sup>&pi;/2</sup> sin(2<i>x</i> &minus; &pi;/4) <i>dx</i></span>[cite: 21]</p>
+    <ul>
+        <li><strong>Step 1: Find the antiderivative.</strong><br> Using substitution <i>u</i> = 2<i>x</i> &minus; &pi;/4, the antiderivative is &minus;(1/2)cos(2<i>x</i> &minus; &pi;/4).</li>
+        <li><strong>Step 2: Evaluate limits.</strong><br> Upper limit (&pi;/2): &minus;(1/2)cos(2(&pi;/2) &minus; &pi;/4) = &minus;(1/2)cos(3&pi;/4) = &minus;(1/2)(&minus;&radic;2/2) = &radic;2/4.<br> Lower limit (&pi;/4): &minus;(1/2)cos(2(&pi;/4) &minus;
+            &pi;/4) = &minus;(1/2)cos(&pi;/4) = &minus;(1/2)(&radic;2/2) = &minus;&radic;2/4.<br> Subtract: (&radic;2/4) &minus; (&minus;&radic;2/4) = 2&radic;2/4 = &radic;2/2.</li>
+        <li><span class="bold">Final Answer: &radic;2/2</span></li>
+    </ul>
+
+    <hr>
+
+    <h2>Question 2: The Area Under the Curve</h2>
+    <p>Using substitution, determine the exact value of the total area bounded by the curve <i>y</i> = 4<i>x</i> / (<i>x</i><sup>2</sup> + 1) and the x-axis within the interval <i>x</i> = 0 and <i>x</i> = &radic;(<i>e</i><sup>2</sup> &minus; 1)[cite: 22].</p>
+    <ul>
+        <li><strong>Step 1: Set up the definite integral for area.</strong><br>
+            <span class="math-block">Area = &int;<sub>0</sub><sup>&radic;(<i>e</i>&sup2;&minus;1)</sup> [4<i>x</i> / (<i>x</i><sup>2</sup> + 1)] <i>dx</i></span></li>
+        <li><strong>Step 2: Apply <i>u</i>-substitution.</strong><br> Let <i>u</i> = <i>x</i><sup>2</sup> + 1 (Herman &amp; Strang, 2024). Therefore, <i>du</i> = 2<i>x</i> <i>dx</i>.<br> The numerator 4<i>x</i> <i>dx</i> is equal to 2<i>du</i>.<br> Find the
+            new <i>u</i> limits of integration:<br> Lower limit: When <i>x</i> = 0, <i>u</i> = 0<sup>2</sup> + 1 = 1.<br> Upper limit: When <i>x</i> = &radic;(<i>e</i><sup>2</sup> &minus; 1), <i>u</i> = (&radic;(<i>e</i><sup>2</sup> &minus; 1))<sup>2</sup>            + 1 = <i>e</i><sup>2</sup> &minus; 1 + 1 = <i>e</i><sup>2</sup>.</li>
+        <li><strong>Step 3: Rewrite and evaluate the integral in terms of <i>u</i>.</strong><br>
+            <span class="math-block">&int;<sub>1</sub><sup><i>e</i>&sup2;</sup> (2 / <i>u</i>) <i>du</i> = 2 [ ln|<i>u</i>| ]<sub>1</sub><sup><i>e</i>&sup2;</sup></span><br> Evaluate at limits: 2(ln(<i>e</i><sup>2</sup>) &minus; ln(1)).<br> Because ln(<i>e</i><sup>2</sup>)
+            = 2 and ln(1) = 0, the equation simplifies to 2(2 &minus; 0).</li>
+        <li><span class="bold">Final Answer: The exact area is 4.</span></li>
+    </ul>
+
+    <hr>
+
+    <h2>Question 3: Application of Integration</h2>
+    <p>The diagram shows a portion of the curve given by <i>y</i> = <i>e</i><sup>cos <i>x</i></sup> sin <i>x</i> and its maximum point D[cite: 22].</p>
+
+    <p><span class="bold">1. Find the coordinate of D.</span></p>
+    <ul>
+        <li><strong>Step 1: Find the first derivative <i>y'</i> using the Product and Chain rules.</strong><br>
+            <i>y'</i> = (<i>e</i><sup>cos <i>x</i></sup> &middot; (&minus;sin <i>x</i>) &middot; sin <i>x</i>) + (<i>e</i><sup>cos <i>x</i></sup> &middot; cos <i>x</i>)<br>
+            <i>y'</i> = <i>e</i><sup>cos <i>x</i></sup>(cos <i>x</i> &minus; sin<sup>2</sup> <i>x</i>)</li>
+        <li><strong>Step 2: Set <i>y'</i> to zero to find the critical point (maximum).</strong><br> Because <i>e</i><sup>cos <i>x</i></sup> is never zero, we set the inner bracket to zero: cos <i>x</i> &minus; sin<sup>2</sup> <i>x</i> = 0.<br> Using the
+            Pythagorean identity sin<sup>2</sup> <i>x</i> = 1 &minus; cos<sup>2</sup> <i>x</i>, substitute this in:<br> cos <i>x</i> &minus; (1 &minus; cos<sup>2</sup> <i>x</i>) = 0 &rarr; cos<sup>2</sup> <i>x</i> + cos <i>x</i> &minus; 1 = 0.<br> Treat
+            this as a quadratic equation where <i>v</i> = cos <i>x</i>: <i>v</i><sup>2</sup> + <i>v</i> &minus; 1 = 0.<br> Using the quadratic formula: <i>v</i> = (&minus;1 &plusmn; &radic;(1 &minus; 4(1)(&minus;1))) / 2 = (&minus;1 &plusmn; &radic;5)
+            / 2.<br> Because cos <i>x</i> must be between &minus;1 and 1 on this interval, we reject the negative root. Thus, cos <i>x</i> = (&radic;5 &minus; 1) / 2.</li>
+        <li><strong>Step 3: Solve for the <i>x</i> and <i>y</i> coordinates.</strong><br> The <i>x</i> coordinate is exactly arccos((&radic;5 &minus; 1) / 2).<br> To find the <i>y</i> coordinate elegantly, recall our previous identity where cos <i>x</i> =
+            sin<sup>2</sup> <i>x</i>. This means sin <i>x</i> = &radic;(cos <i>x</i>).<br> Substitute these into the original equation <i>y</i> = <i>e</i><sup>cos <i>x</i></sup> sin <i>x</i> to get:<br>
+            <i>y</i> = <i>e</i><sup>((&radic;5 &minus; 1) / 2)</sup> &middot; &radic;((&radic;5 &minus; 1) / 2)</li>
+        <li><span class="bold">Final Answer (Coordinate D): [ arccos((&radic;5 &minus; 1) / 2) , <i>e</i><sup>((&radic;5 &minus; 1) / 2)</sup> &middot; &radic;((&radic;5 &minus; 1) / 2) ]</span></li>
+    </ul>
+
+    <p><span class="bold">2. Determine the exact value of the area of the shaded region bounded by the curve and the x-axis within the interval <i>x</i> = 0 and <i>x</i> = &pi;.</span></p>
+    <ul>
+        <li><strong>Step 1: Set up the integral and substitution.</strong><br>
+            <span class="math-block">Area = &int;<sub>0</sub><sup>&pi;</sup> <i>e</i><sup>cos <i>x</i></sup> sin <i>x</i> <i>dx</i></span><br> Let <i>u</i> = cos <i>x</i>. Then <i>du</i> = &minus;sin <i>x</i> <i>dx</i>, meaning sin <i>x</i> <i>dx</i>            = &minus;<i>du</i>.<br> Change limits: When <i>x</i> = 0, <i>u</i> = cos(0) = 1. When <i>x</i> = &pi;, <i>u</i> = cos(&pi;) = &minus;1.</li>
+        <li><strong>Step 2: Rewrite and evaluate the integral.</strong><br> The integral becomes: &int;<sub>1</sub><sup>&minus;1</sup> &minus;<i>e</i><sup><i>u</i></sup> <i>du</i>.<br> Flip the limits to remove the negative sign: &int;<sub>&minus;1</sub><sup>1</sup>            <i>e</i><sup><i>u</i></sup> <i>du</i> = [ <i>e</i><sup><i>u</i></sup> ]<sub>&minus;1</sub><sup>1</sup>.<br> Evaluate: <i>e</i><sup>1</sup> &minus; <i>e</i><sup>&minus;1</sup>.</li>
+        <li><span class="bold">Final Answer: The exact area is <i>e</i> &minus; 1/<i>e</i>.</span></li>
+    </ul>
+
+    <h2>References</h2>
+    <p class="indent">Herman, E., &amp; Strang, G. (2024). <i>Calculus volume 1</i>. OpenStax. Rice University. https://openstax.org/details/books/calculus-volume-1</p>
+
 </body>
+
 </html>
