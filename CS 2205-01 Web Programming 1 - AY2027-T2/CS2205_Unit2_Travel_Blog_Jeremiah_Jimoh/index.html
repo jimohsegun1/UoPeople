@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Declare UTF-8 encoding and responsive viewport so text and layouts render consistently across devices -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Chronicles | Travel Blog Homepage</title>
+
+    <style>
+        /* Reset box-sizing and enable smooth anchor scrolling to make in-page jumps feel natural */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Establish a clean, readable typographic baseline and light canvas for visual hierarchy */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F4F7FA;
+            color: #1F2937;
+            line-height: 1.65;
+        }
+
+        /* Header provides clear site identity and primary navigation between the two blog pages */
+        .site-header {
+            background: linear-gradient(135deg, #16324F 0%, #1E5B88 100%);
+            color: #FFFFFF;
+            padding: 28px 24px 24px;
+            text-align: center;
+            border-bottom: 4px solid #E07A5F;
+        }
+
+        .site-title {
+            margin: 0 0 6px;
+            font-size: 2.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .site-tagline {
+            margin: 0 0 18px;
+            font-size: 1.02rem;
+            color: #DCEAF7;
+        }
+
+        /* Primary site navigation allows seamless switching between Homepage and Travel Stories */
+        .primary-nav {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.14);
+            padding: 8px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .primary-nav-link {
+            display: inline-block;
+            margin: 0 4px;
+            color: #F1F5F9;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 7px 18px;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        /* Active page indicator renders as a crisp white pill badge */
+        .primary-nav-link.active-page {
+            background-color: #FFFFFF;
+            color: #16324F;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+            cursor: default;
+        }
+
+        .primary-nav-link.active-page:hover {
+            background-color: #FFFFFF;
+            color: #16324F;
+            transform: translateY(-1px);
+        }
+
+        /* Interactive hover and keyboard focus: soft translucent frosted glass with opacity */
+        .primary-nav-link:not(.active-page):hover,
+        .primary-nav-link:not(.active-page):focus {
+            background-color: rgba(255, 255, 255, 0.24);
+            color: #FFFFFF;
+            font-weight: 600;
+            border-color: rgba(255, 255, 255, 0.38);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        /* Constrain main reading width so content stays comfortable to scan on wide screens */
+        .page-container {
+            max-width: 1020px;
+            margin: 34px auto;
+            padding: 0 22px 48px;
+        }
+
+        .intro-banner {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 24px 28px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .intro-banner h2 {
+            margin: 0 0 8px;
+            color: #16324F;
+            font-size: 1.45rem;
+        }
+
+        .intro-banner p {
+            margin: 0;
+            color: #4B5563;
+            font-size: 0.98rem;
+        }
+
+        /* Number blocks container organizes the four continent jump links in a balanced horizontal row */
+        .number-blocks-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 22px 0 36px;
+        }
+
+        /* Shared structure and smooth hover transition for all interactive number blocks */
+        .number-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 205px;
+            height: 138px;
+            margin: 10px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #FFFFFF;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+            border: 3px solid transparent;
+        }
+
+        .block-digit {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.05;
+        }
+
+        .block-label {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-top: 6px;
+            opacity: 0.94;
+        }
+
+        /* Distinct background colors visually differentiate each continent shortcut */
+        .block-europe {
+            background-color: #1E5B88; /* Deep Cobalt Blue */
+        }
+
+        .block-asia {
+            background-color: #1E7A62; /* Forest Teal */
+        }
+
+        .block-america {
+            background-color: #C85A32; /* Warm Terracotta */
+        }
+
+        .block-africa {
+            background-color: #6B3E7A; /* Royal Plum */
+        }
+
+        /* Hover and focus styles provide tactile feedback indicating each block is interactive */
+        .number-block:hover,
+        .number-block:focus {
+            transform: translateY(-7px) scale(1.04);
+            box-shadow: 0 14px 26px rgba(15, 23, 42, 0.24);
+            filter: brightness(1.1);
+            border-color: #FDE68A;
+            outline: none;
+        }
+
+        /* Destination section cards group each continent's nested list cleanly */
+        .destination-section {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 26px 32px;
+            margin-bottom: 26px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            border-left: 8px solid #1E5B88;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Match each section's left accent bar to its corresponding number block color */
+        .section-europe { border-left-color: #1E5B88; }
+        .section-asia { border-left-color: #1E7A62; }
+        .section-america { border-left-color: #C85A32; }
+        .section-africa { border-left-color: #6B3E7A; }
+
+        /* Highlight the active section when reached via anchor link to orient the reader */
+        .destination-section:target {
+            background-color: #FFFDF5;
+            box-shadow: 0 0 0 3px #F59E0B, 0 8px 22px rgba(15, 23, 42, 0.12);
+        }
+
+        /* Continent headings (Level 1 hierarchy) use distinct bold colors tied to each block */
+        .continent-heading {
+            margin: 0 0 6px;
+            font-size: 1.55rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .section-europe .continent-heading { color: #1E5B88; }
+        .section-asia .continent-heading { color: #1E7A62; }
+        .section-america .continent-heading { color: #C85A32; }
+        .section-africa .continent-heading { color: #6B3E7A; }
+
+        .continent-subtitle {
+            margin: 8px 0 16px;
+            font-size: 0.94rem;
+            color: #6B7280;
+        }
+
+        /* Outer ordered list represents Countries (Level 2 hierarchy) with distinct subheading styling */
+        .country-list {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .country-item {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #B45309; /* Rich Amber-Brown subheading color distinct from continent heading */
+            margin-bottom: 14px;
+        }
+
+        .country-name {
+            display: inline-block;
+            color: #B45309;
+            margin-bottom: 4px;
+        }
+
+        /* Inner unordered list represents Cities (Level 3 hierarchy) with contrasting cool slate tones */
+        .city-sublist {
+            list-style-type: disc;
+            margin: 6px 0 8px;
+            padding: 10px 18px 10px 32px;
+            background-color: #F8FAFC;
+            border-left: 3px solid #94A3B8;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .city-item {
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: #0F4C5C; /* Deep Teal-Slate color visually separated from country subheadings */
+            padding: 3px 0;
+        }
+
+        /* Return-to-top anchor improves usability after scrolling to lower continents */
+        .back-to-top {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #1E5B88;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            text-decoration: underline;
+            color: #C85A32;
+        }
+
+        .site-footer {
+            background-color: #16324F;
+            color: #CBD5E1;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- Site header with title and navigation linking Homepage and Travel Stories -->
+    <header class="site-header">
+        <h1 class="site-title">Wanderlust Chronicles</h1>
+        <p class="site-tagline">Explore Iconic Destinations, Cultural Gems, and Curated Travel Stories Worldwide</p>
+        <nav class="primary-nav" aria-label="Main website navigation">
+            <a href="index.html" class="primary-nav-link active-page">Home: Destinations</a>
+            <a href="travel-stories.html" class="primary-nav-link">Travel Stories</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <!-- Introductory guidance instructing visitors how to interact with the number blocks -->
+        <section class="intro-banner">
+            <h2>Explore Destinations by Continent</h2>
+            <p>Select any numbered block below to jump directly to its continent guide, featuring top countries (ordered list) and must-visit cities (nested unordered list).</p>
+        </section>
+
+        <!-- Four color-coded interactive number blocks linking to continent sections via fragment identifiers -->
+        <nav class="number-blocks-nav" aria-label="Continent quick jump blocks">
+            <a href="#europe" class="number-block block-europe" title="Jump to Europe destinations">
+                <span class="block-digit">1</span>
+                <span class="block-label">Europe</span>
+            </a>
+            <a href="#asia" class="number-block block-asia" title="Jump to Asia destinations">
+                <span class="block-digit">2</span>
+                <span class="block-label">Asia</span>
+            </a>
+            <a href="#america" class="number-block block-america" title="Jump to America destinations">
+                <span class="block-digit">3</span>
+                <span class="block-label">America</span>
+            </a>
+            <a href="#africa" class="number-block block-africa" title="Jump to Africa destinations">
+                <span class="block-digit">4</span>
+                <span class="block-label">Africa</span>
+            </a>
+        </nav>
+
+        <!-- Block 1 Target: Europe nested destination list -->
+        <section id="europe" class="destination-section section-europe">
+            <h2 class="continent-heading">1. Europe</h2>
+            <p class="continent-subtitle">Timeless architecture, Mediterranean coastlines, and rich artistic heritage.</p>
+            <ol class="country-list">
+                <li class="country-item">
+                    <span class="country-name">France</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Paris</li>
+                        <li class="city-item">Nice</li>
+                        <li class="city-item">Lyon</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Italy</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Rome</li>
+                        <li class="city-item">Venice</li>
+                        <li class="city-item">Florence</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Greece</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Athens</li>
+                        <li class="city-item">Santorini</li>
+                        <li class="city-item">Thessaloniki</li>
+                    </ul>
+                </li>
+            </ol>
+            <a href="#top" class="back-to-top">&uarr; Back to Number Blocks</a>
+        </section>
+
+        <!-- Block 2 Target: Asia nested destination list -->
+        <section id="asia" class="destination-section section-asia">
+            <h2 class="continent-heading">2. Asia</h2>
+            <p class="continent-subtitle">Ancient temples, futuristic skylines, and extraordinary culinary traditions.</p>
+            <ol class="country-list">
+                <li class="country-item">
+                    <span class="country-name">Japan</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Tokyo</li>
+                        <li class="city-item">Kyoto</li>
+                        <li class="city-item">Osaka</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">China</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Beijing</li>
+                        <li class="city-item">Shanghai</li>
+                        <li class="city-item">Xi'an</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">India</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">New Delhi</li>
+                        <li class="city-item">Mumbai</li>
+                        <li class="city-item">Jaipur</li>
+                    </ul>
+                </li>
+            </ol>
+            <a href="#top" class="back-to-top">&uarr; Back to Number Blocks</a>
+        </section>
+
+        <!-- Block 3 Target: America nested destination list -->
+        <section id="america" class="destination-section section-america">
+            <h2 class="continent-heading">3. America</h2>
+            <p class="continent-subtitle">Vibrant metropolitan centers, coastal culture, and sweeping natural landscapes.</p>
+            <ol class="country-list">
+                <li class="country-item">
+                    <span class="country-name">USA</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">New York City</li>
+                        <li class="city-item">Los Angeles</li>
+                        <li class="city-item">Chicago</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Brazil</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Rio de Janeiro</li>
+                        <li class="city-item">S&atilde;o Paulo</li>
+                        <li class="city-item">Salvador</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Canada</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Toronto</li>
+                        <li class="city-item">Vancouver</li>
+                        <li class="city-item">Montreal</li>
+                    </ul>
+                </li>
+            </ol>
+            <a href="#top" class="back-to-top">&uarr; Back to Number Blocks</a>
+        </section>
+
+        <!-- Block 4 Target: Africa nested destination list -->
+        <section id="africa" class="destination-section section-africa">
+            <h2 class="continent-heading">4. Africa</h2>
+            <p class="continent-subtitle">Iconic ancient wonders, vibrant markets, and breathtaking coastal panoramas.</p>
+            <ol class="country-list">
+                <li class="country-item">
+                    <span class="country-name">South Africa</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Cape Town</li>
+                        <li class="city-item">Johannesburg</li>
+                        <li class="city-item">Durban</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Egypt</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Cairo</li>
+                        <li class="city-item">Luxor</li>
+                        <li class="city-item">Sharm El Sheikh</li>
+                    </ul>
+                </li>
+                <li class="country-item">
+                    <span class="country-name">Morocco</span>
+                    <ul class="city-sublist">
+                        <li class="city-item">Marrakech</li>
+                        <li class="city-item">Casablanca</li>
+                        <li class="city-item">Fez</li>
+                    </ul>
+                </li>
+            </ol>
+            <a href="#top" class="back-to-top">&uarr; Back to Number Blocks</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wanderlust Chronicles Travel Blog | CS 2205 Web Programming 1</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define UTF-8 encoding and responsive viewport to ensure consistent cross-browser rendering -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Chronicles | Travel Stories</title>
+
+    <style>
+        /* Apply consistent box-sizing and smooth scrolling for anchor-link jumps to bottom stories */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Maintain matching typography and color palette with the Homepage for cohesive site design */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F4F7FA;
+            color: #1F2937;
+            line-height: 1.65;
+        }
+
+        .site-header {
+            background: linear-gradient(135deg, #16324F 0%, #1E5B88 100%);
+            color: #FFFFFF;
+            padding: 28px 24px 24px;
+            text-align: center;
+            border-bottom: 4px solid #E07A5F;
+        }
+
+        .site-title {
+            margin: 0 0 6px;
+            font-size: 2.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .site-tagline {
+            margin: 0 0 18px;
+            font-size: 1.02rem;
+            color: #DCEAF7;
+        }
+
+        /* Primary site navigation allows seamless switching between Homepage and Travel Stories */
+        .primary-nav {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.14);
+            padding: 8px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .primary-nav-link {
+            display: inline-block;
+            margin: 0 4px;
+            color: #F1F5F9;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 7px 18px;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        /* Active page indicator renders as a crisp white pill badge */
+        .primary-nav-link.active-page {
+            background-color: #FFFFFF;
+            color: #16324F;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+            cursor: default;
+        }
+
+        .primary-nav-link.active-page:hover {
+            background-color: #FFFFFF;
+            color: #16324F;
+            transform: translateY(-1px);
+        }
+
+        /* Interactive hover and keyboard focus: soft translucent frosted glass with opacity */
+        .primary-nav-link:not(.active-page):hover,
+        .primary-nav-link:not(.active-page):focus {
+            background-color: rgba(255, 255, 255, 0.24);
+            color: #FFFFFF;
+            font-weight: 600;
+            border-color: rgba(255, 255, 255, 0.38);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .page-container {
+            max-width: 1020px;
+            margin: 34px auto;
+            padding: 0 22px 48px;
+        }
+
+        .section-intro {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 22px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            text-align: center;
+        }
+
+        .section-intro h2 {
+            margin: 0 0 8px;
+            color: #16324F;
+            font-size: 1.5rem;
+        }
+
+        .section-intro p {
+            margin: 0;
+            color: #4B5563;
+            font-size: 0.98rem;
+        }
+
+        /* Styled table uses colorful borders, bold headers, alternating rows, and ample cell padding */
+        .destinations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 46px;
+            background-color: #FFFFFF;
+            border: 4px solid #1E5B88;
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Bold, high-contrast headers clarify each column's purpose */
+        .destinations-table thead th {
+            background-color: #16324F;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 18px 24px;
+            border: 2px solid #E07A5F;
+            letter-spacing: 0.4px;
+        }
+
+        /* Generous padding and colorful cell borders separate destination data cleanly */
+        .destinations-table tbody td {
+            padding: 20px 24px;
+            border: 2px solid #3B82A6;
+            vertical-align: middle;
+        }
+
+        /* Alternating row colors (zebra striping) improve horizontal scannability */
+        .destinations-table tbody tr:nth-child(odd) {
+            background-color: #F0F7FC;
+        }
+
+        .destinations-table tbody tr:nth-child(even) {
+            background-color: #FFF7F0;
+        }
+
+        /* Destination text styling in the left column */
+        .destination-name {
+            display: block;
+            font-size: 1.32rem;
+            font-weight: 700;
+            color: #16324F;
+            margin-bottom: 4px;
+        }
+
+        .destination-country {
+            display: block;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: #C85A32;
+            margin-bottom: 8px;
+        }
+
+        .destination-hint {
+            display: block;
+            font-size: 0.88rem;
+            color: #4B5563;
+        }
+
+        /* Clickable image wrapper inside the right column */
+        .attraction-link {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid #1E7A62;
+            background-color: #0F172A;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+        }
+
+        /* Smooth opacity hover effect signals interactivity on every attraction photo */
+        .attraction-image {
+            display: block;
+            width: 320px;
+            max-width: 100%;
+            height: 215px;
+            object-fit: cover;
+            border-radius: 6px;
+            opacity: 1;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .attraction-image.img-eiffel {
+            object-position: center 25%;
+        }
+
+        .attraction-image.img-colosseum {
+            object-position: center center;
+        }
+
+        .attraction-image.img-liberty {
+            object-position: center 15%;
+        }
+
+        .attraction-link:hover .attraction-image,
+        .attraction-link:focus .attraction-image {
+            opacity: 0.62;
+            transform: scale(1.03);
+        }
+
+        .image-caption {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #1E5B88;
+        }
+
+        /* Bottom section housing full travel stories jumped to from the attraction images */
+        .stories-heading {
+            font-size: 1.65rem;
+            color: #16324F;
+            border-bottom: 3px solid #E07A5F;
+            padding-bottom: 8px;
+            margin: 12px 0 24px;
+        }
+
+        .story-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 26px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            border-left: 7px solid #1E5B88;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .story-card.story-rome { border-left-color: #C85A32; }
+        .story-card.story-newyork { border-left-color: #1E7A62; }
+
+        /* Visual highlight when a visitor jumps to a specific story via an attraction image */
+        .story-card:target {
+            background-color: #FFFDF5;
+            box-shadow: 0 0 0 3px #F59E0B, 0 8px 22px rgba(15, 23, 42, 0.12);
+        }
+
+        .story-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            color: #16324F;
+        }
+
+        .story-meta {
+            margin: 0 0 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1E7A62;
+        }
+
+        .story-card p {
+            margin: 0 0 12px;
+            color: #374151;
+        }
+
+        .back-to-table {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1E5B88;
+            text-decoration: none;
+        }
+
+        .back-to-table:hover {
+            color: #C85A32;
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            background-color: #16324F;
+            color: #CBD5E1;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body id="destinations-table-top">
+    <!-- Shared site header for consistent navigation across the Travel Blog Website -->
+    <header class="site-header">
+        <h1 class="site-title">Wanderlust Chronicles</h1>
+        <p class="site-tagline">Iconic Landmarks and Unforgettable Travel Stories Around the Globe</p>
+        <nav class="primary-nav" aria-label="Main website navigation">
+            <a href="index.html" class="primary-nav-link">Home: Destinations</a>
+            <a href="travel-stories.html" class="primary-nav-link active-page">Travel Stories</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <section class="section-intro">
+            <h2>Featured Travel Destinations &amp; Landmarks</h2>
+            <p>Hover over any landmark photo to preview the interactive fade effect, then click the image to jump directly to its detailed travel story at the bottom of the page.</p>
+        </section>
+
+        <!-- Two-column table pairing travel destinations with clickable attraction images -->
+        <table class="destinations-table">
+            <thead>
+                <tr>
+                    <th scope="col">Travel Destination</th>
+                    <th scope="col">Associated Attraction (Click Image for Story)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="destination-name">Paris</span>
+                        <span class="destination-country">France, Europe</span>
+                        <span class="destination-hint">Famous for art, riverside cafes, and the iron lattice landmark on the Champ de Mars.</span>
+                    </td>
+                    <td>
+                        <a href="#eiffel-tower" class="attraction-link" title="Jump to Eiffel Tower story">
+                            <img src="images/eiffel-tower.png" alt="Photograph of the Eiffel Tower in Paris, France" class="attraction-image img-eiffel">
+                        </a>
+                        <span class="image-caption">Eiffel Tower &rarr; Read Story Below</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="destination-name">Rome</span>
+                        <span class="destination-country">Italy, Europe</span>
+                        <span class="destination-hint">The Eternal City, home to classical ruins, historic piazzas, and ancient Roman engineering.</span>
+                    </td>
+                    <td>
+                        <a href="#colosseum" class="attraction-link" title="Jump to Colosseum story">
+                            <img src="images/colosseum.png" alt="Photograph of the ancient Colosseum at dusk in Rome, Italy" class="attraction-image img-colosseum">
+                        </a>
+                        <span class="image-caption">The Colosseum &rarr; Read Story Below</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="destination-name">New York</span>
+                        <span class="destination-country">United States, North America</span>
+                        <span class="destination-hint">A global crossroads of culture, skyline architecture, and historic harbor monuments.</span>
+                    </td>
+                    <td>
+                        <a href="#statue-of-liberty" class="attraction-link" title="Jump to Statue of Liberty story">
+                            <img src="images/statue-of-liberty.png" alt="Photograph of the Statue of Liberty in New York Harbor, USA" class="attraction-image img-liberty">
+                        </a>
+                        <span class="image-caption">Statue of Liberty &rarr; Read Story Below</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Detailed attraction stories targeted by the clickable images in the table above -->
+        <section aria-labelledby="stories-section-title">
+            <h2 id="stories-section-title" class="stories-heading">Detailed Attraction Stories</h2>
+
+            <article id="eiffel-tower" class="story-card story-paris">
+                <h3>Paris: The Eiffel Tower</h3>
+                <p class="story-meta">Location: Champ de Mars, Paris, France | Completed: 1889</p>
+                <p>Designed by Gustave Eiffel's engineering firm for the 1889 World's Fair, the Eiffel Tower stands 330 meters tall and remains the most recognizable silhouette in Paris. Originally criticized by several contemporary artists, its wrought-iron latticework soon became a celebrated triumph of modern structural engineering.</p>
+                <p><strong>Traveler Tip:</strong> Visit just before dusk to experience panoramic views across the Seine River during golden hour, then stay at ground level to watch the tower sparkle for five minutes at the top of every hour after sunset.</p>
+                <a href="#destinations-table-top" class="back-to-table">&uarr; Back to Destinations Table</a>
+            </article>
+
+            <article id="colosseum" class="story-card story-rome">
+                <h3>Rome: The Colosseum</h3>
+                <p class="story-meta">Location: Piazza del Colosseo, Rome, Italy | Completed: 80 AD</p>
+                <p>Built under the Flavian emperors Vespasian and Titus, the Colosseum is the largest ancient amphitheater ever constructed. Capable of seating over 50,000 spectators, its layered travertine limestone arches and complex underground hypogeum demonstrate the remarkable sophistication of Roman public architecture.</p>
+                <p><strong>Traveler Tip:</strong> Book an early morning combined ticket that includes the Roman Forum and Palatine Hill to beat midday crowds and explore the arena floor while the morning light illuminates the tiered arches.</p>
+                <a href="#destinations-table-top" class="back-to-table">&uarr; Back to Destinations Table</a>
+            </article>
+
+            <article id="statue-of-liberty" class="story-card story-newyork">
+                <h3>New York: The Statue of Liberty</h3>
+                <p class="story-meta">Location: Liberty Island, New York Harbor, USA | Dedicated: 1886</p>
+                <p>Gifted by France to the United States, the Statue of Liberty was sculpted by Fr&eacute;d&eacute;ric Auguste Bartholdi with an internal iron framework engineered by Gustave Eiffel. Standing in Upper New York Bay, her copper exterior oxidized over decades into its signature sea-green patina, symbolizing freedom and welcoming generations of newcomers.</p>
+                <p><strong>Traveler Tip:</strong> Reserve ferry tickets departing from Battery Park well in advance if you plan to climb the pedestal or crown, and include a stop at nearby Ellis Island on the same ferry loop for the full historical story.</p>
+                <a href="#destinations-table-top" class="back-to-table">&uarr; Back to Destinations Table</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wanderlust Chronicles Travel Blog | CS 2205 Web Programming 1</p>
+    </footer>
+</body>
+</html>
